@@ -66,7 +66,7 @@
 						component: './StudyTracker/StudyGoals',
 					},
 				],
-		icon: 'WifiOutlined',
+		icon: 'MenuUnfoldOutlined',
 	},
 
 	// DANH MUC HE THONG

@@ -54,6 +54,7 @@ function SubjectManager() {
   return (
     <>
       <h1>Quản lí môn học</h1>
+      <p style={{fontWeight:'bold' , color:'red'}}>*Nhấn hàng để xem lịch học*</p>
       <Table
         dataSource={subjects}
         rowKey="id"
