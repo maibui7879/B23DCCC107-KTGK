@@ -62,25 +62,25 @@ function StudyGoals() {
 
   return (
     <>
-      <Button type="primary" onClick={handleAdd}>Đặt Mục Tiêu Học Tập</Button>
+      <Button type="primary" onClick={handleAdd} style={{marginBottom:'20px'}}>Đặt Mục Tiêu Học Tập</Button>
       <Table
-        dataSource={goals}
+        dataSource={goals} pagination={{ position: ["bottomCenter"] }}
         columns={[
-          { title: "Tháng", dataIndex: "month", key: "month" },
+          { title: "Tháng", dataIndex: "month", key: "month" ,align: "center",},
           { 
             title: "Môn học", 
             dataIndex: "subjectId", 
-            key: "subjectId",
+            key: "subjectId",align: "center",
             render: (subjectId: string) => {
               const subject = subjects.find((s) => s.id === subjectId);
               return subject ? subject.name : "Không xác định";
             }
           },
-          { title: "Mục tiêu (giờ)", dataIndex: "targetHours", key: "targetHours" },
+          { title: "Mục tiêu (giờ)", dataIndex: "targetHours", key: "targetHours" ,align: "center",},
           {
             title: "Đã học (giờ)",
             dataIndex: "completedHours",
-            key: "completedHours",
+            key: "completedHours",align: "center",
             render: (text, record) => (
               <Input
                 type="number"
@@ -92,7 +92,7 @@ function StudyGoals() {
             ),
           },
           {
-            title: "Tiến độ",
+            title: "Tiến độ",align: "center",
             render: (_, record) => (
                 <Progress 
                 percent={record.targetHours > 0 ? Math.round((record.completedHours / record.targetHours) * 100) : 0} 
@@ -100,9 +100,9 @@ function StudyGoals() {
               />
             ),
           },
-          { title: "Ghi chú", dataIndex: "notes", key: "notes" },
+          { title: "Ghi chú", dataIndex: "notes", key: "notes" ,align: "center",},
           {
-            title: "Hành động",
+            title: "Hành động",align: "center",
             render: (_, record) => (
               <>
                 <Button onClick={() => handleEdit(record)}>Sửa</Button>

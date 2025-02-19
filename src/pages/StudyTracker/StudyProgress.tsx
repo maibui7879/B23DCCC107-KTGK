@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Table, Button, Modal, Input, Form } from 'antd';
+import { ArrowLeftOutlined, PlusOutlined, EditOutlined, DeleteOutlined } from '@ant-design/icons';
 import { StudySession, Subject, useLocalStorage } from '../../hooks/useLocalStorageStudy';
 
 function StudyProgress() {
@@ -33,51 +34,59 @@ function StudyProgress() {
 	const handleDelete = (id: string) => {
 		setSessions(sessions.filter((s) => s.id !== id));
 	};
+	const formatDate = (date: string) => {
+		const [year, month, day] = date.split('-');
+		return `${day}/${month}/${year.slice(-2)}`;
+	};
 
 	const handleSubmit = () => {
-        form.validateFields().then((values) => {
-          const newSessions = editingSession
-            ? sessions.map((s) => (s.id === editingSession.id ? { ...s, ...values } : s))
-            : [...sessions, { id: Date.now().toString(), subjectId, ...values }];
-      
-          setSessions(newSessions);
-          setIsModalOpen(false);
-        });
-      };
-      
+		form.validateFields().then((values) => {
+			const newSessions = editingSession
+				? sessions.map((s) => (s.id === editingSession.id ? { ...s, ...values } : s))
+				: [...sessions, { id: Date.now().toString(), subjectId, ...values }];
+
+			setSessions(newSessions);
+			setIsModalOpen(false);
+		});
+	};
+
 	const handleGoToReturn = () => {
 		window.location.href = `/quan-ly-mon-hoc`;
 	};
 
 	return (
 		<>
-			<Button onClick={handleGoToReturn}>⬅ Quay lại</Button>
-			<h2>Lịch học môn: {subjectName}</h2>
-			<Button type='primary' onClick={handleAdd}>
-				Thêm Lịch Học
-			</Button>
+			<Button icon={<ArrowLeftOutlined />} onClick={handleGoToReturn} />
+			<h2 style={{ textAlign: 'left' }}>Lịch học môn: {subjectName}</h2>
+
 			<Table
 				dataSource={sessions.filter((s) => s.subjectId === subjectId)}
 				rowKey='id'
 				columns={[
-					{ title: 'Ngày học', dataIndex: 'date', key: 'date' },
-					{ title: 'Thời lượng (giờ)', dataIndex: 'duration', key: 'duration' },
-					{ title: 'Nội dung học', dataIndex: 'content', key: 'content' }, // Thêm nội dung học
-					{ title: 'Ghi chú', dataIndex: 'note', key: 'note' }, // Thêm ghi chú
+					{ title: 'Ngày học', dataIndex: 'date', key: 'date', align: 'center' },
+					{ title: 'Thời lượng (giờ)', dataIndex: 'duration', key: 'duration', align: 'center' },
+					{ title: 'Nội dung học', dataIndex: 'content', key: 'content', align: 'center' },
+					{ title: 'Ghi chú', dataIndex: 'note', key: 'note', align: 'center' },
 					{
 						title: 'Hành động',
 						key: 'actions',
+						align: 'center',
 						render: (_, record) => (
 							<>
-								<Button onClick={() => handleEdit(record)}>Sửa</Button>
-								<Button danger onClick={() => handleDelete(record.id)}>
-									Xóa
-								</Button>
+								<Button icon={<EditOutlined />} onClick={() => handleEdit(record)} style={{ marginRight: 8 }} />
+								<Button icon={<DeleteOutlined />} danger onClick={() => handleDelete(record.id)} />
 							</>
 						),
 					},
 				]}
+				style={{ minHeight: 300 }}
+				pagination={{ position: ['bottomCenter'] }}
 			/>
+			<div style={{ display: 'flex', justifyContent: 'center', marginTop: 16 }}>
+				<Button type='primary' onClick={handleAdd} icon={<PlusOutlined />}>
+					Thêm Lịch Học
+				</Button>
+			</div>
 			<Modal
 				title={editingSession ? 'Sửa Lịch Học' : 'Thêm Lịch Học'}
 				visible={isModalOpen}
