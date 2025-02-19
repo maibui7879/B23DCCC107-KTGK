@@ -41,6 +41,11 @@
 		name: 'TodoList',
 		component: './TodoList',
 		icon: 'UnorderedListOutlined',
+	},{
+		path: '/random',
+		name: 'Random',
+		component: './Random',
+		icon: 'WifiOutlined',
 	},
 	// DANH MUC HE THONG
 	// {
