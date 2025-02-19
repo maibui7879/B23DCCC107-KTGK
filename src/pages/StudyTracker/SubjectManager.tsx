@@ -34,7 +34,7 @@ function SubjectManager() {
     };
 
   const handleGoToSubject = (id: string) => {
-    window.location.href = `/quan-ly-mon-hoc/muc-tieu/${id}`;
+    window.location.href = `/quan-ly-mon-hoc/${id}`;
   };
 
   return (
