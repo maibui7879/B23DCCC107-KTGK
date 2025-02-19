@@ -27,14 +27,32 @@ function StudyGoals() {
 
   const handleSubmit = () => {
     form.validateFields().then((values) => {
-      const newGoals = editingGoal
-        ? goals.map((g) => (g.id === editingGoal.id ? { ...g, ...values } : g))
-        : [...goals, { id: Date.now().toString(), completedHours: 0, ...values }];
-
+      const { month, subjectId, targetHours } = values;
+  
+      const existingGoalIndex = goals.findIndex(
+        (g) => g.month === month && g.subjectId === subjectId
+      );
+  
+      let newGoals;
+      if (existingGoalIndex !== -1) {
+        newGoals = [...goals];
+        newGoals[existingGoalIndex] = {
+          ...newGoals[existingGoalIndex],
+          targetHours,
+        };
+      } else {
+        // Nếu không trùng, thêm mục tiêu mới
+        newGoals = [
+          ...goals,
+          { id: Date.now().toString(), completedHours: 0, ...values },
+        ];
+      }
+  
       setGoals(newGoals);
       setIsModalOpen(false);
     });
   };
+  
 
   return (
     <>

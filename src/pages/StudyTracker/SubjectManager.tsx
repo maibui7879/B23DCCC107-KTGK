@@ -22,16 +22,30 @@ function SubjectManager() {
 
   const handleDelete = (id: string) => {
     setSubjects(subjects.filter((s) => s.id !== id));
-  };    const handleSubmit = () => {
-        form.validateFields().then((values) => {
-        const newSubjects = editingSubject
-            ? subjects.map((s) => (s.id === editingSubject.id ? { ...s, ...values } : s))
-            : [...subjects, { id: Date.now().toString(), ...values }];
-
-        setSubjects(newSubjects);
-        setIsModalOpen(false);
+  };    
+  const handleSubmit = () => {
+    form.validateFields().then((values) => {
+     
+      const isDuplicate = subjects.some(
+        (s) => s.name.trim().toLowerCase() === values.name.trim().toLowerCase() && s.id !== editingSubject?.id
+      );
+  
+      if (isDuplicate) {
+        Modal.error({
+          title: "Lỗi",
+          content: "Tên môn học đã tồn tại!",
         });
-    };
+        return; 
+      }
+  
+      const newSubjects = editingSubject
+        ? subjects.map((s) => (s.id === editingSubject.id ? { ...s, ...values } : s))
+        : [...subjects, { id: Date.now().toString(), ...values }];
+  
+      setSubjects(newSubjects);
+      setIsModalOpen(false);
+    });
+  };
 
   const handleGoToSubject = (id: string) => {
     window.location.href = `/quan-ly-mon-hoc/${id}`;
