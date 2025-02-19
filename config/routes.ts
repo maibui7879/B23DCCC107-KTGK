@@ -44,9 +44,31 @@
 	},{
 		path: '/random',
 		name: 'Random',
-		component: './Random',
+		component: './Random',	
+		icon: 'WifiOutlined',
+	},{
+		// path: '/study-tracker',
+		name: 'Theo dõi môn học',
+		routes: [
+					{
+						name: 'ChucVu',
+						path: 'quan-ly-mon-hoc',
+						component: './StudyTracker/SubjectManager',
+					},
+					{
+						name: 'Tiến trình',
+						path: 'quan-ly-mon-hoc/:id',
+						component: './StudyTracker/StudyProgress',
+						hideInMenu: true,
+					},{
+						name: 'Tiến trình',
+						path: 'quan-ly-mon-hoc/muc-tieu/:id',
+						component: './StudyTracker/StudyGoals',hideInMenu: true,
+					},
+				],
 		icon: 'WifiOutlined',
 	},
+
 	// DANH MUC HE THONG
 	// {
 	// 	name: 'DanhMuc',
