@@ -2388,7 +2388,7 @@ interface DomSerializerImpl {
     addAttributeFilter: (name: string, callback: ParserFilterCallback) => void;
     getNodeFilters: () => ParserFilter[];
     getAttributeFilters: () => ParserFilter[];
-    removeNodeFilter: (name: string, callback?: ParserFilterCallback) => void;
+    removeNodeFilter: (name: string, cal  lback?: ParserFilterCallback) => void;
     removeAttributeFilter: (name: string, callback?: ParserFilterCallback) => void;
     serialize: {
         (node: Element, parserArgs: {

@@ -1,0 +1,78 @@
+
+  .game-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    color: black;
+  }
+  
+  .game-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .choices {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  /* .choice-btn {
+    background: #4A90E2;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  } */
+  
+  /* .choice-btn:hover {
+    background: #145DA0;
+  } */
+  
+  .result {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 20px;
+  }
+  
+  .result-text {
+    font-size: 24px;
+    color: #D32F2F;
+    margin-top: 10px;
+  }
+  
+  .history-title {
+    margin-top: 20px;
+    font-size: 18px;
+    text-decoration: underline;
+  }
+  
+  .history {
+    list-style: none;
+    padding: 0;
+    max-height: 150px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #f9f9f9;
+    padding: 10px;
+  }
+  
+  .history-item {
+    padding: 5px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .history-item:last-child {
+    border-bottom: none;
+  }
+  
+  

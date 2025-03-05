@@ -40,30 +40,58 @@
 		path: '/todo-list',
 		name: 'TodoList',
 		component: './TodoList',
-		icon: 'UnorderedListOutlined',
+		icon: 'UnorderedListOutlined',hideInMenu: true,
 	},{
 		path: '/random',
 		name: 'Random',
 		component: './Random',	
+		icon: 'WifiOutlined',hideInMenu: true,
+	},
+	{
+		path: '/keo-bua-bao',
+		name: 'Trò chơi',
+		component: './KeoBuaBao',	
 		icon: 'WifiOutlined',
-	},{
-		// path: '/study-tracker',
-		name: 'Theo dõi môn học',
+	},
+	// {
+	// 	// path: '/study-tracker',
+	// 	name: 'Theo dõi môn học',hideInMenu: true,
+	// 	routes: [
+	// 				{
+	// 					name: 'Quản lý môn học',
+	// 					path: 'quan-ly-mon-hoc',
+	// 					component: './StudyTracker/SubjectManager',
+	// 				},
+	// 				{
+	// 					name: 'Tiến trình',
+	// 					path: 'quan-ly-mon-hoc/:id',
+	// 					component: './StudyTracker/StudyProgress',
+	// 					hideInMenu: true,
+	// 				},{
+	// 					name: 'Mục tiêu',
+	// 					path: 'muc-tieu-mon-hoc',
+	// 					component: './StudyTracker/StudyGoals',
+	// 				},
+	// 			],
+	// 	icon: 'MenuUnfoldOutlined',
+	// },
+	{
+		
+		name: 'Quản lý đề thi',
 		routes: [
 					{
 						name: 'Quản lý môn học',
-						path: 'quan-ly-mon-hoc',
-						component: './StudyTracker/SubjectManager',
+						path: 'mon-hoc',
+						component: './Exam/Subjects',
 					},
 					{
-						name: 'Tiến trình',
-						path: 'quan-ly-mon-hoc/:id',
-						component: './StudyTracker/StudyProgress',
-						hideInMenu: true,
+						name: 'Quản lý câu hỏi',
+						path: 'quan-ly-cau-hoi',
+						component: './Exam/Questions',
 					},{
-						name: 'Mục tiêu',
+						name: 'Quản lý đề thi',
 						path: 'muc-tieu-mon-hoc',
-						component: './StudyTracker/StudyGoals',
+						component: './Exam/Exam',
 					},
 				],
 		icon: 'MenuUnfoldOutlined',
