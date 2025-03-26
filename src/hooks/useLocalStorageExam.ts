@@ -21,7 +21,10 @@ export function useLocalStorage<T>(key: string, initialValue: T) {
 	}, [key]);
 
 	useEffect(() => {
-		localStorage.setItem(key, JSON.stringify(value));
+		const handler = setTimeout(() => {
+			localStorage.setItem(key, JSON.stringify(value));
+		}, 300); // Giảm số lần ghi vào localStorage
+		return () => clearTimeout(handler);
 	}, [key, value]);
 
 	return [value, saveValue] as const;

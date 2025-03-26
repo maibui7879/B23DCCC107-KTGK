@@ -36,67 +36,50 @@
 		component: './RandomUser',
 		icon: 'ArrowsAltOutlined',
 	},
+
 	{
 		path: '/todo-list',
 		name: 'TodoList',
+		icon: 'OrderedListOutlined',
 		component: './TodoList',
-		icon: 'UnorderedListOutlined',hideInMenu: true,
-	},{
-		path: '/random',
-		name: 'Random',
-		component: './Random',	
-		icon: 'WifiOutlined',hideInMenu: true,
 	},
 	{
-		path: '/keo-bua-bao',
-		name: 'Trò chơi',
-		component: './KeoBuaBao',	
-		icon: 'WifiOutlined',
+		path: '/Quanlylichhen',
+		name: 'Quản lý lịch hẹn',
+		component: './Quanlylichhen/Quanlylichhen',
+		icon: 'CalendarOutlined',
 	},
-	// {
-	// 	// path: '/study-tracker',
-	// 	name: 'Theo dõi môn học',hideInMenu: true,
-	// 	routes: [
-	// 				{
-	// 					name: 'Quản lý môn học',
-	// 					path: 'quan-ly-mon-hoc',
-	// 					component: './StudyTracker/SubjectManager',
-	// 				},
-	// 				{
-	// 					name: 'Tiến trình',
-	// 					path: 'quan-ly-mon-hoc/:id',
-	// 					component: './StudyTracker/StudyProgress',
-	// 					hideInMenu: true,
-	// 				},{
-	// 					name: 'Mục tiêu',
-	// 					path: 'muc-tieu-mon-hoc',
-	// 					component: './StudyTracker/StudyGoals',
-	// 				},
-	// 			],
-	// 	icon: 'MenuUnfoldOutlined',
-	// },
 	{
-		
-		name: 'Quản lý đề thi',
-		routes: [
-					{
-						name: 'Quản lý môn học',
-						path: 'mon-hoc',
-						component: './Exam/Subjects',
-					},
-					{
-						name: 'Quản lý câu hỏi',
-						path: 'quan-ly-cau-hoi',
-						component: './Exam/Questions',
-					},{
-						name: 'Quản lý đề thi',
-						path: 'muc-tieu-mon-hoc',
-						component: './Exam/Exam',
-					},
-				],
-		icon: 'MenuUnfoldOutlined',
+		path: '/Quanlynhanvien',
+		name: 'Quản lý nhân viên',
+		component: './Quanlynhanvien/Quanlynhanvien',
+		icon: 'UserOutlined',
 	},
-
+	{
+		path: '/Danhgiadichvu',
+		name: 'Đánh giá dịch vụ',
+		component: './Danhgiadichvu/Danhgiadichvu',
+		icon: 'StarOutlined',
+	},
+	{
+		path: '/Thongke',
+		name: 'Thống kê',
+		component: './Thongke/Thongke',
+		icon: 'BarChartOutlined',
+	},
+	{
+		path: '/resposive-profile',
+		name: 'ResponsiveProfile',
+		component: './ResposiveProfile/ResponsiveProfile',
+		icon: 'ArrowsAltOutlined',
+	},
+	{
+		path: '/quanlykhoahoc',
+		name: 'Quản lý khóa học',
+		component: './Quanlikhoahoc/Management.tsx',
+		icon: 'AppstoreOutlined',
+	},
+	
 	// DANH MUC HE THONG
 	// {
 	// 	name: 'DanhMuc',
@@ -149,4 +132,5 @@
 	{
 		component: './exception/404',
 	},
+	
 ];

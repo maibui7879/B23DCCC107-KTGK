@@ -1,0 +1,27 @@
+.ant-picker-calendar {
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.ant-picker-calendar-header {
+    text-align: center;
+    font-weight: bold;
+    padding: 10px;
+}
+
+.ant-picker-calendar-date {
+    text-align: center;
+    
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+.ant-picker-calendar-date:hover {
+    background-color: #f0f0f0;
+}
+
+.ant-picker-calendar-selected-day {
+    background-color: #ff4d4f !important;
+    color: white;
+    font-weight: bold;
+}
