@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-import { Modal, Form, Input, Select, InputNumber } from "antd";
-import { v4 as uuidv4 } from "uuid";
+import { Modal, Form, Input, Select, Button } from "antd";
 import { Course } from "./CourseModel";
 
 interface Props {
@@ -20,26 +19,28 @@ const CourseFormModal: React.FC<Props> = ({ visible, onClose, onSave, editingCou
   }, []);
 
   useEffect(() => {
-    form.setFieldsValue(editingCourse || { name: "", learners: 0, status: "Đang mở", teacher: "" });
+    form.setFieldsValue(editingCourse || { id: "", name: "", learners: 0, status: "Đang mở", teacher: "" });
   }, [editingCourse, form]);
 
   const handleSubmit = () => {
     form.validateFields().then((values) => {
-      const courseData = { ...values, id: editingCourse?.id || uuidv4() };
-      onSave(courseData);
+      onSave(values);
       onClose();
       form.resetFields();
     });
   };
 
   return (
-    <Modal visible={visible} title={editingCourse ? "Sửa khóa học" : "Thêm khóa học"} onCancel={onClose} onOk={handleSubmit}>
+    <Modal visible={visible} onCancel={onClose} onOk={handleSubmit} title={editingCourse ? "Sửa khóa học" : "Thêm khóa học"}>
       <Form form={form} layout="vertical">
+        <Form.Item name="id" label="Mã khóa học" rules={[{ required: true, message: "Vui lòng nhập mã" }]}>
+          <Input />
+        </Form.Item>
         <Form.Item name="name" label="Tên khóa học" rules={[{ required: true, message: "Vui lòng nhập tên" }]}>
           <Input />
         </Form.Item>
         <Form.Item name="learners" label="Số học viên">
-          <InputNumber min={0} />
+          <Input type="number" />
         </Form.Item>
         <Form.Item name="status" label="Trạng thái">
           <Select>
